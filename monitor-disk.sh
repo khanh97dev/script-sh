@@ -20,11 +20,15 @@ while true; do
     DIFF=$((CURRENT - PREVIOUS))
 
     # Check if increase ≥ 1 GB
+    TIME=$(date +'%Y-%m-%d %H:%M:%S')
+
     if [ "$DIFF" -ge "$THRESHOLD" ]; then
-        echo "Disk usage increased by ≥ 1 GB: $((DIFF / 1024 / 1024)) MB"
+        echo -ne "\r[$TIME] [ALERT] Disk usage increased by ≥ 1 GB: $((DIFF / 1024 / 1024)) MB"
     else
-        echo "Disk usage unchanged or below threshold. Previous: $((PREVIOUS / 1024 / 1024)) MB, Current: $((CURRENT / 1024 / 1024)) MB"
+        echo -ne "\r[$TIME] [INFO] Disk usage unchanged. Prev: $((PREVIOUS / 1024 / 1024)) MB, Curr: $((CURRENT / 1024 / 1024)) MB"
     fi
+
+
 
 
     # Update log
