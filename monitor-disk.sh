@@ -22,7 +22,6 @@ while true; do
     # Check if increase ≥ 1 GB
     if [ "$DIFF" -ge "$THRESHOLD" ]; then
         echo "Disk usage increased by ≥ 1 GB: $((DIFF / 1024 / 1024)) MB"
-        notify-send "Disk Alert" "Root disk usage increased by ≥ 1 GB"
     else
         echo "Disk usage unchanged or below threshold. Previous: $((PREVIOUS / 1024 / 1024)) MB, Current: $((CURRENT / 1024 / 1024)) MB"
     fi
